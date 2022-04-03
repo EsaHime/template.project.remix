@@ -30,3 +30,22 @@ export default function App () {
     </html>
   )
 }
+
+export function ErrorBoundary (context: { error: Error }) {
+  console.error(context.error)
+  return (
+    <html>
+    <head>
+      <title>Oh no!</title>
+      <Meta />
+      <Links />
+    </head>
+
+    <body>
+      <h1>Oh no</h1>
+      <p>Something went wrong. Please try again.</p>
+      <Scripts />
+    </body>
+    </html>
+  )
+}

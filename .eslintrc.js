@@ -5,7 +5,8 @@ module.exports = {
     node: true
   },
   extends: [
-    'standard'
+    'standard',
+    'plugin:@typescript-eslint/recommended'
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -16,5 +17,6 @@ module.exports = {
     '@typescript-eslint'
   ],
   rules: {
+    'import/order': ['error']
   }
 }

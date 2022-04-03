@@ -1,7 +1,20 @@
-const getUser = () => {
+import { useLoaderData } from '@remix-run/react'
+import { json } from '@remix-run/node'
+import { User } from '@prisma/client'
+import { UserService } from '../services/user'
+
+// See how many functions we can use.
+// https://remix.run/docs/en/v1/api/conventions#loader
+
+const loader = async () => {
+  const users = await UserService.getUserList()
+  return json(users)
 }
 
-export default function Index () {
+const IndexPage = () => {
+  const users = useLoaderData<User[]>()
+  console.log(users)
+
   return (
     <div style={{ fontFamily: 'system-ui, sans-serif', lineHeight: '1.4' }}>
       <h1>Welcome to Remix</h1>
@@ -33,3 +46,9 @@ export default function Index () {
     </div>
   )
 }
+
+export {
+  loader
+}
+
+export default IndexPage
